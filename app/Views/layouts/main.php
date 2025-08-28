@@ -1,41 +1,71 @@
+<?php
+	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
+
+<!-- Mirrored from themeon.net/nifty/v3.0.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 08:28:51 GMT -->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="Gilang Heavy">
-	<meta name="keywords" content="Gilang Heavy, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="generator" content="Hugo 0.87.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="description" content="Nifty is a responsive admin dashboard template based on Bootstrap 5 framework. There are a lot of useful components.">
+    <title>Dashboard 1 | Nifty - Admin Template</title>
 
-	<title>CodeIgniter 4 Starter Panel</title>
+    <!-- STYLESHEETS -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~--- -->
 
-	<link rel="shortcut icon" href="favicon.ico" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<link href="<?= base_url('assets/css/app.css') ?>" rel="stylesheet">
+    <!-- Fonts [ OPTIONAL ] -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;family=Ubuntu:wght@400;500;700&amp;display=swap" rel="stylesheet">
 
-	<script src="<?= base_url('assets/js/app.js') ?>"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS [ REQUIRED ] -->
+    <link rel="stylesheet" href="<?= $PATH_ASSET_CSS . "bootstrap.min.75a07e3a3100a6fed983b15ad1b297c127a8c2335854b0efc3363731475cbed6.css" ?>">
 
+    <!-- Nifty CSS [ REQUIRED ] -->
+	<link rel="stylesheet" href="<?= $PATH_ASSET_CSS . "nifty.min.4d1ebee0c2ac4ed3c2df72b5178fb60181cfff43375388fee0f4af67ecf44050.css" ?>">
 </head>
 
-<body data-theme="light">
-	<div class="wrapper">
-		<?= $this->include('layouts/sidebar'); ?>
-		<div class="main">
-			<?= $this->include('layouts/header'); ?>
-			<main class="content">
-				<div class="container-fluid p-0">
-					<?= $this->include('components/alerts'); ?>
-					<?= $this->renderSection('content'); ?>
-				</div>
-			</main>
-			<?= $this->include('layouts/footer'); ?>
-		</div>
-	</div>
-	<?= $this->renderSection('javascript'); ?>
-</body>
+<body class="jumping" data-theme="light">
+	<!-- PAGE CONTAINER -->
+    <div id="root" class="root mn--max hd--expanded">
+        <?= $this->renderSection('content'); ?>
 
+		<!-- HEADER -->
+        <?= $this->include('layouts/header'); ?>
+		<!-- END - HEADER -->
+
+        <!-- MAIN NAVIGATION -->
+        <?= $this->include('layouts/nav'); ?>
+        <!-- END - MAIN NAVIGATION -->
+
+        <!-- SIDEBAR -->
+        <?= $this->include('layouts/sidebar'); ?>        
+        <!-- END - SIDEBAR -->
+
+    </div>
+    <!-- END - PAGE CONTAINER -->
+
+    <!-- SETTING LAYOUT-->
+    <?= $this->include('layouts/components/settings_container'); ?>
+    <!-- END - SETTING LAYOUT-->
+
+    <!-- BOXED LAYOUT-->
+    <?= $this->include('layouts/components/boxed_layout'); ?>
+    <!-- END - BOXED LAYOUT-->
+
+    <!-- OFFCANVAS-->
+    <?= $this->include('layouts/components/offcanvas'); ?>
+    <!-- END - OFFCANVAS-->
+
+</body>
+    <!-- Bootstrap JS [ OPTIONAL ] -->
+    <script src='<?= $PATH_ASSET_JS . "bootstrap.min.js"?>' defer></script>
+    <!-- Nifty JS [ OPTIONAL ] -->
+    <script src='<?= $PATH_ASSET_JS . "nifty.min.js"?>' defer></script>
+    <?= $this->renderSection('javascript'); ?>
 </html>
+

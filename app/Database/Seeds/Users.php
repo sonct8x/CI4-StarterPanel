@@ -52,7 +52,7 @@ class Users extends Seeder
 		// Database seeding for users
 		$this->db->table('users')->insert([
 			'fullname' 		=> 'Developer',
-			'username'    	=> 'developer@mail.io',
+			'username'    	=> 'admin@gmail.com',
 			'password'    	=>  password_hash('123456', PASSWORD_DEFAULT),
 			'role'    		=>  1,
 			'created_at'    =>  date('Y-m-d h:i:s')

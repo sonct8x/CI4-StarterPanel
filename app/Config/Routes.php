@@ -38,4 +38,10 @@ $routes->group('menu-management', static function ($routes) {
     $routes->post('create-menu', 'Settings::createMenu');
     $routes->post('create-submenu', 'Settings::createSubMenu');
 });
+$routes->group('configs', static function ($routes) {
+    $routes->get('/', 'Configs::index');
+    $routes->post('create-menu-category', 'Settings::createMenuCategory');
+    $routes->post('create-menu', 'Settings::createMenu');
+    $routes->post('create-submenu', 'Settings::createSubMenu');
+});
 $routes->get('menu','Menu::index');

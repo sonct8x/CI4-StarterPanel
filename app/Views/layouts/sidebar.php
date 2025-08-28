@@ -1,46 +1,52 @@
-<nav id="sidebar" class="sidebar js-sidebar">
-    <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="<?= base_url(); ?> ">
-            <span class="align-middle"><i>Starter Panel</i></span>
-        </a>
-        <ul class="sidebar-nav">
-            <?php foreach ($MenuCategory as $mCategory) : ?>
-                <li class="sidebar-header">
-                    <?= $mCategory['menu_category']; ?>
-                </li>
-                <?php
-                $Menu = getMenu($mCategory['menuCategoryID'], $user['role']);
-                foreach ($Menu as $menu) :
-                    if ($menu['parent'] == 0) :
-                ?>
-                        <li class="sidebar-item <?= ($segment == $menu['url']) ? 'active' : ''; ?>">
-                            <a class="sidebar-link" href="<?= base_url($menu['url']); ?> ">
-                                <i class="align-middle" data-feather="<?= $menu['icon']; ?>"></i> <span class="align-middle"><?= $menu['title']; ?></span>
-                            </a>
-                        </li>
-                    <?php
-                    else :
-                        $SubMenu =  getSubMenu($menu['menu_id'], $user['role']);
-                    ?>
-                        <li class="sidebar-item <?= ($segment == $menu['url']) ? 'active' : ''; ?>">
-                            <a data-bs-target="#<?= $menu['url'] ?>" data-bs-toggle="collapse" class="sidebar-link collapsed" aria-expanded="<?= ($segment == $menu['url']) ? 'true' : 'false'; ?>">
-                                <i class="align-middle" data-feather="<?= $menu['icon']; ?>"></i> <span class="align-middle"><?= $menu['title']; ?></span>
-                            </a>
-                            <ul id="<?= $menu['url'] ?>" class="sidebar-dropdown list-unstyled collapse <?= ($segment == $menu['url']) ? ' show' : ''; ?> " data-bs-parent="#sidebar">
-                                <?php foreach ($SubMenu as $subMenu) : ?>
-                                    <li class="sidebar-item <?= ($subsegment == $subMenu['url']) ? 'active' : ''; ?>">
-                                        <a class="sidebar-link" href="<?= base_url($menu['url'] . '/' . $subMenu['url']); ?>">
-                                            <?= $subMenu['title']; ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </li>
-                <?php
-                    endif;
-                endforeach;
-                ?>
-            <?php endforeach; ?>
-        </ul>
+<aside class="sidebar">
+    <div class="sidebar__inner scrollable-content">
+
+        <!-- This element is only visible when sidebar Stick mode is active. -->
+        <div class="sidebar__stuck align-item-center mb-3 px-4">
+            <p class="m-0 text-danger">Close the sidebar =></p>
+            <button type="button" class="sidebar-toggler btn-close btn-lg rounded-circle ms-auto" aria-label="Close"></button>
+        </div>
+
+        <!-- Sidebar tabs nav -->
+        <div class="sidebar__wrap">
+            <nav class="px-3">
+                <div class="nav nav-callout nav-fill flex-nowrap" id="nav-tab" role="tablist">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-chat" type="button" role="tab" aria-controls="nav-chat" aria-selected="true">
+                        <i class="d-block demo-pli-speech-bubble-5 fs-3 mb-2"></i>
+                        <span>Chat</span>
+                    </button>
+
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-reports" type="button" role="tab" aria-controls="nav-reports" aria-selected="false">
+                        <i class="d-block demo-pli-information fs-3 mb-2"></i>
+                        <span>Reports</span>
+                    </button>
+
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-settings" type="button" role="tab" aria-controls="nav-settings" aria-selected="false">
+                        <i class="d-block demo-pli-wrench fs-3 mb-2"></i>
+                        <span>Settings</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <!-- End - Sidebar tabs nav -->
+
+        <!-- Sideabar tabs content -->
+        <div class="tab-content sidebar__wrap" id="nav-tabContent">
+
+            <!-- Chat tab Content -->
+            <?= $this->include('layouts/components/chat_tab') ?>
+            <!-- End - Chat tab content -->
+
+            <!-- Reports tab content -->
+            <?= $this->include('layouts/components/report_tab') ?>
+            <!-- End - Reports tab content -->
+
+            <!-- Settings content -->
+            <?= $this->include('layouts/components/settings_tab') ?>
+            <!-- End - Settings content -->
+
+        </div>
+        <!-- End - Sidebar tabs content -->
+
     </div>
-</nav>
+</aside>

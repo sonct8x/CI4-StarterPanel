@@ -59,6 +59,14 @@ abstract class BaseController extends Controller
         $this->encrypter        = \Config\Services::encrypter();
         $this->ApplicationModel = new ApplicationModel();
 
+        // Set biến toàn cục cho view
+        $PATH_ASSET_CSS     = base_url('assets/v3.0.1/css/');
+	    $PATH_ASSET_JS      = base_url('assets/v3.0.1/js/');
+        $PATH_ASSET_IMG     = base_url('assets/v3.0.1/img/');
+        $PATH_ASSET_PAGE    = base_url('assets/v3.0.1/pages/');
+        $PATH_ASSET         = base_url('assets/v3.0.1/');
+
+
         $user    = $this->ApplicationModel->getUser(username: session()->get('username'));
         $segment = $this->segment->getSegment(1);
         if ($segment) {
@@ -70,7 +78,12 @@ abstract class BaseController extends Controller
             'segment'        => $segment,
             'subsegment'     => $subsegment,
             'user'           => $user,
-            'MenuCategory'   => $this->ApplicationModel->getAccessMenuCategory(session()->get('role'))
+            'MenuCategory'   => $this->ApplicationModel->getAccessMenuCategory(session()->get('role')),
+            'PATH_ASSET_IMG' => $PATH_ASSET_IMG,
+            'PATH_ASSET_CSS' => $PATH_ASSET_CSS,
+            'PATH_ASSET_JS'  => $PATH_ASSET_JS,
+            'PATH_ASSET_PAGE'  => $PATH_ASSET_PAGE,
+            'PATH_ASSET'    => $PATH_ASSET,
         ];
     }
 }
